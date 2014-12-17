@@ -21,28 +21,31 @@
 
         events: {
             'dblclick li': 'toggleEditMode',
-            'keypress .todo-text-input': 'modifyText'
+            'keypress .todo-text-input': 'modifyText',
+            'click button': 'toggleEditMode'
         },
         
         render: function () {
             this.$el.html(this.template(this.model.toJSON()));
+
+            this.display = this.$('.todo-display-text');
+            this.input = this.$('.todo-text-input');
+            this.form = this.$('.edit');
+
             return this;
         },
 
         toggleEditMode: function (){
-            this.$el.find('.edit').toggleClass('hidden');
+            this.model.set({
+                text: this.input.val()
+            });
+
+            this.form.toggleClass('hidden');
         },
 
         modifyText: function(event) {
-          this.$el.find('.todo-display-text').html(this.$el.find('.todo-text-input').val());
-          if(event.keyCode === 13){
-            this.model.set({
-                text: this.$el.find('.todo-text-input').val()
-            });
-            this.toggleEditMode();
-          }
+          this.display.html(this.input.val().replace(/\n/g, '<br />'));
         }
-
 
     });
 
@@ -79,8 +82,7 @@
             this.aboutView = new AboutView();
         },
 
-        start: function () {
-            Backbone.history.start();
+        start: function () {            
             this.indexView.render();
         },
 
@@ -115,4 +117,5 @@
 
 $(document).ready(function () {
     App.router.start();
+    Backbone.history.start();
 });
