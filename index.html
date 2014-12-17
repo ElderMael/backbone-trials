@@ -35,11 +35,28 @@
   <main id="app" class="container">
 
   </main>
-  <script src="bower_components/underscore/underscore.js"></script>
-  <script src="bower_components/handlebars/handlebars.js"></script>
-  <script src="bower_components/jquery/dist/jquery.js"></script>
-  <script src="bower_components/bootstrap/dist/js/bootstrap.js"></script>
-  <script src="bower_components/backbone/backbone.js"></script>
-  <script src="app.js"></script>
-</body>
-</html>
+
+  <script id="todo-template" type="text/x-handlebars">  
+    <ul>
+        <li class="row input-group">
+            <span class="input-group-addon">
+                <input class="done" type="checkbox" {{#if done }}checked{{/if}} />
+                <p class="todo-display-text">{{text}}</p>
+            
+                <div class="edit hidden">                
+                    <textarea class="todo-text-input">{{text}}</textarea>
+                </div>
+            </span>
+        </li>
+    </ul>
+  </script>
+
+        <script src="bower_components/underscore/underscore.js"></script>
+        <script src="bower_components/handlebars/handlebars.js"></script>
+        <script src="bower_components/jquery/dist/jquery.js"></script>
+        <script src="bower_components/bootstrap/dist/js/bootstrap.js"></script>
+        <script src="bower_components/backbone/backbone.js"></script>
+        <script src="app.js"></script>
+
+    </body>
+    </html>

@@ -11,18 +11,39 @@
 
     var TodoView = Backbone.View.extend({
 
-        template: Handlebars.compile('{{done}} task: {{text}}'),
+        template: Handlebars.compile($('#todo-template').html()),
 
         el: '#app',        
 
         initialize: function () {
             this.model = new TodoItem();
         },
+
+        events: {
+            'dblclick li': 'toggleEditMode',
+            'keypress .todo-text-input': 'modifyText'
+        },
         
         render: function () {
             this.$el.html(this.template(this.model.toJSON()));
             return this;
+        },
+
+        toggleEditMode: function (){
+            this.$el.find('.edit').toggleClass('hidden');
+        },
+
+        modifyText: function(event) {
+          this.$el.find('.todo-display-text').html(this.$el.find('.todo-text-input').val());
+          if(event.keyCode === 13){
+            this.model.set({
+                text: this.$el.find('.todo-text-input').val()
+            });
+            this.toggleEditMode();
+          }
         }
+
+
     });
 
     var AboutView = Backbone.View.extend({
@@ -59,8 +80,8 @@
         },
 
         start: function () {
-            this.indexView.render();
             Backbone.history.start();
+            this.indexView.render();
         },
 
         routes: {
