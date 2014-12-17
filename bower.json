@@ -1,0 +1,28 @@
+{
+  "name": "backbone-trials",
+  "version": "0.0.1",
+  "homepage": "https://github.com/ElderMael/backbone-trials",
+  "authors": [
+    "ElderMael <sftwr.mael@gmail.com>"
+  ],
+  "description": "BackboneJS Trials for Micky",
+  "main": "index.html",
+  "keywords": [
+    "Backbone"
+  ],
+  "license": "MIT",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "backbone": "~1.1.2",
+    "jquery": "~2.1.1",
+    "handlebars": "~2.0.0",
+    "bootstrap": "~3.3.1"
+  }
+}
