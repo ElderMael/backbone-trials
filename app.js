@@ -4,7 +4,7 @@
         defaults: function () {
             return {
                 done: false,
-                text: ''
+                text: 'This is a pending todo'
             };
         }
     });
@@ -13,13 +13,24 @@
 
         template: Handlebars.compile('{{done}} task: {{text}}'),
 
-        el: '#app',
+        el: '#app',        
 
         initialize: function () {
             this.model = new TodoItem();
         },
+        
         render: function () {
             this.$el.html(this.template(this.model.toJSON()));
+            return this;
+        }
+    });
+
+    var AboutView = Backbone.View.extend({
+
+        el: '#app',
+
+        render: function(){
+            this.$el.html("Copylefts: ElderMael");
             return this;
         }
     });
@@ -44,6 +55,7 @@
         initialize: function () {
             this.indexView = new IndexView();
             this.todoView = new TodoView();
+            this.aboutView = new AboutView();
         },
 
         start: function () {
@@ -53,7 +65,8 @@
 
         routes: {
             '': 'index',
-            'todo': 'todo'
+            'todo': 'todo',
+            'about': 'about'
         },
 
         index: function () {
@@ -62,6 +75,10 @@
 
         todo: function () {
             this.todoView.render();
+        },
+
+        about: function(){
+            this.aboutView.render();
         }
 
     });

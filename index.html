@@ -8,23 +8,38 @@
 
     <!-- Bootstrap -->
     <link href="bower_components/bootstrap/dist/css/bootstrap.css" rel="stylesheet">
+    <link href="style.css" rel="stylesheet">
 
 </head>
 <body>
-<header>
-    <h1>Starting</h1>
-</header>
-<main id="app">
+    <nav class="navbar navbar-inverse pull-center" role="navigation">
+        <div class="container-fluid">
+            <div class="navbar-header">
+               <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#collapse-links">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="#">My Todo List</a>
+        </div>
 
-</main>
-<footer>
-    Micky
-</footer>
-<script src="bower_components/underscore/underscore.js"></script>
-<script src="bower_components/handlebars/handlebars.js"></script>
-<script src="bower_components/jquery/dist/jquery.js"></script>
-<script src="bower_components/bootstrap/dist/js/bootstrap.js"></script>
-<script src="bower_components/backbone/backbone.js"></script>
-<script src="app.js"></script>
+        <div class="collapse navbar-collapse" id="collapse-links">
+          <ul class="nav navbar-nav">
+              <li class="active"><a href="#todo">Todo Items<span class="sr-only">(current)</span></a></li>
+              <li><a href="#about">About</a></li>
+          </ul>
+      </div>
+  </nav>
+
+  <main id="app" class="container">
+
+  </main>
+  <script src="bower_components/underscore/underscore.js"></script>
+  <script src="bower_components/handlebars/handlebars.js"></script>
+  <script src="bower_components/jquery/dist/jquery.js"></script>
+  <script src="bower_components/bootstrap/dist/js/bootstrap.js"></script>
+  <script src="bower_components/backbone/backbone.js"></script>
+  <script src="app.js"></script>
 </body>
 </html>
