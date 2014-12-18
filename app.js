@@ -9,20 +9,19 @@
         }
     });
 
+    var TodoList = Backbone.Collection.extend({
+        model: TodoItem
+    });
+
     var TodoView = Backbone.View.extend({
 
         template: Handlebars.compile($('#todo-template').html()),
 
-        el: '#app',
-
-        initialize: function () {
-            this.model = new TodoItem();
-        },
-
         events: {
-            'dblclick li': 'toggleEditMode',
+            'dblclick': 'toggleEditMode',
             'keypress .todo-text-input': 'modifyText',
-            'click button': 'toggleEditMode'
+            'click button': 'toggleEditMode',
+            'click .done-box': 'toggleDone'
         },
 
         render: function () {
@@ -44,9 +43,26 @@
         },
 
         modifyText: function (event) {
-            this.display.text(this.input.val().replace(/\n/g, '<br />'));
+            this.display.text(this.input.val());
+        },
+
+        toggleDone: function () {
+            this.model.set({done: !this.model.get('done')})
+            this.display.toggleClass('finished');
         }
 
+    });
+
+    var TodoListView = Backbone.View.extend({
+        el: '#app',
+        render: function () {
+            this.$el.empty();
+
+            this.collection.forEach(function (todoItem) {
+                var todoView = new TodoView({model: todoItem});
+                this.$el.append(todoView.render().el);
+            }, this);
+        }
     });
 
     var AboutView = Backbone.View.extend({
@@ -78,7 +94,12 @@
 
         initialize: function () {
             this.indexView = new IndexView();
-            this.todoView = new TodoView();
+            this.todoListView = new TodoListView({
+                collection: new TodoList([
+                    {text: 'Remember the milk', done: false},
+                    {text: 'Bring the milk', done: true}
+                ])
+            });
             this.aboutView = new AboutView();
         },
 
@@ -97,7 +118,7 @@
         },
 
         todo: function () {
-            this.todoView.render();
+            this.todoListView.render();
         },
 
         about: function () {

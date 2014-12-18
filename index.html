@@ -12,10 +12,10 @@
 
 </head>
 <body>
-    <nav class="navbar navbar-inverse pull-center" role="navigation">
-        <div class="container-fluid">
-            <div class="navbar-header">
-               <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#collapse-links">
+<nav class="navbar navbar-inverse pull-center" role="navigation">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#collapse-links">
                 <span class="sr-only">Toggle navigation</span>
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
@@ -25,39 +25,36 @@
         </div>
 
         <div class="collapse navbar-collapse" id="collapse-links">
-          <ul class="nav navbar-nav">
-              <li class="active"><a href="#todo">Todo Items<span class="sr-only">(current)</span></a></li>
-              <li><a href="#about">About</a></li>
-          </ul>
-      </div>
-  </nav>
+            <ul class="nav navbar-nav">
+                <li class="active"><a href="#todo">Todo Items<span class="sr-only">(current)</span></a></li>
+                <li><a href="#about">About</a></li>
+            </ul>
+        </div>
+</nav>
 
-  <main id="app" class="container">
+<main id="app" class="post-its container"></main>
 
-  </main>
+<script id="todo-template" type="text/x-handlebars">
+    <span class="input-group-addon">
+        <input class="done-box" type="checkbox" {{#if done }}checked{{/if}} />
 
-  <script id="todo-template" type="text/x-handlebars">  
-    <ul>
-        <li class="row input-group">
-            <span class="post-it input-group-addon">
-                <input class="done" type="checkbox" {{#if done }}checked{{/if}} />
-                <p class="todo-display-text"><strong>{{{text}}}</strong></p>
-                <div class="edit hidden">                
-                    <textarea class="todo-text-input">{{{text}}}</textarea>
-                    <br/>
-                    <button>Done Editing</button>
-                </div>
-            </span>
-        </li>
-    </ul>
-  </script>
+        <p class="todo-display-text">
+            <strong {{#if done}}class="finished"{{/if}}>{{{text}}}</strong>
+        </p>
+        <div class="edit hidden">
+            <textarea class="todo-text-input">{{{text}}}</textarea>
+            <br/>
+            <button>Done Editing</button>
+        </div>
+    </span>
+</script>
 
-        <script src="bower_components/underscore/underscore.js"></script>
-        <script src="bower_components/handlebars/handlebars.js"></script>
-        <script src="bower_components/jquery/dist/jquery.js"></script>
-        <script src="bower_components/bootstrap/dist/js/bootstrap.js"></script>
-        <script src="bower_components/backbone/backbone.js"></script>
-        <script src="app.js"></script>
+<script src="bower_components/underscore/underscore.js"></script>
+<script src="bower_components/handlebars/handlebars.js"></script>
+<script src="bower_components/jquery/dist/jquery.js"></script>
+<script src="bower_components/bootstrap/dist/js/bootstrap.js"></script>
+<script src="bower_components/backbone/backbone.js"></script>
+<script src="app.js"></script>
 
-    </body>
-    </html>
+</body>
+</html>
