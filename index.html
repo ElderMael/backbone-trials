@@ -41,9 +41,9 @@
         <li class="row input-group">
             <span class="post-it input-group-addon">
                 <input class="done" type="checkbox" {{#if done }}checked{{/if}} />
-                <p class="todo-display-text"><strong>{{text}}</strong></p>            
+                <p class="todo-display-text"><strong>{{{text}}}</strong></p>
                 <div class="edit hidden">                
-                    <textarea class="todo-text-input">{{text}}</textarea>
+                    <textarea class="todo-text-input">{{{text}}}</textarea>
                     <br/>
                     <button>Done Editing</button>
                 </div>

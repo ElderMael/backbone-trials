@@ -13,7 +13,7 @@
 
         template: Handlebars.compile($('#todo-template').html()),
 
-        el: '#app',        
+        el: '#app',
 
         initialize: function () {
             this.model = new TodoItem();
@@ -24,18 +24,18 @@
             'keypress .todo-text-input': 'modifyText',
             'click button': 'toggleEditMode'
         },
-        
+
         render: function () {
             this.$el.html(this.template(this.model.toJSON()));
 
-            this.display = this.$('.todo-display-text');
+            this.display = this.$('.todo-display-text strong');
             this.input = this.$('.todo-text-input');
             this.form = this.$('.edit');
 
             return this;
         },
 
-        toggleEditMode: function (){
+        toggleEditMode: function () {
             this.model.set({
                 text: this.input.val()
             });
@@ -43,8 +43,8 @@
             this.form.toggleClass('hidden');
         },
 
-        modifyText: function(event) {
-          this.display.html(this.input.val().replace(/\n/g, '<br />'));
+        modifyText: function (event) {
+            this.display.text(this.input.val().replace(/\n/g, '<br />'));
         }
 
     });
@@ -53,7 +53,7 @@
 
         el: '#app',
 
-        render: function(){
+        render: function () {
             this.$el.html("Copylefts: ElderMael");
             return this;
         }
@@ -82,7 +82,7 @@
             this.aboutView = new AboutView();
         },
 
-        start: function () {            
+        start: function () {
             this.indexView.render();
         },
 
@@ -100,7 +100,7 @@
             this.todoView.render();
         },
 
-        about: function(){
+        about: function () {
             this.aboutView.render();
         }
 
