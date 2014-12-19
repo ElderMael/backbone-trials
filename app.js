@@ -1,6 +1,32 @@
-(function (root) {
+requirejs.config({
+    paths: {
+      'jquery': 'bower_components/jquery/dist/jquery',
+      'handlebars': 'bower_components/handlebars/handlebars.amd',
+      'underscore': 'bower_components/underscore/underscore',
+      'backbone': 'bower_components//backbone/backbone',
+      'bootstrap': 'bower_components/bootstrap/dist/js/bootstrap',
+      'core': 'core'
+    },
 
-    var TodoItem = Backbone.Model.extend({
+    shim: {
+        'bootstrap': {
+            deps: ['jquery']
+        },
+
+        'backbone': {            
+            deps: ['underscore', 'jquery', 'handlebars'],
+            exports: 'Backbone'
+        },
+
+        'underscore': {
+            exports: '_'
+        }        
+    }
+});
+
+require(['core'], function(Core){
+
+    var TodoItem = Core.Backbone.Model.extend({
         defaults: function () {
             return {
                 done: false,
@@ -9,13 +35,13 @@
         }
     });
 
-    var TodoList = Backbone.Collection.extend({
+    var TodoList = Core.Backbone.Collection.extend({
         model: TodoItem
     });
 
-    var TodoView = Backbone.View.extend({
+    var TodoView = Core.Backbone.View.extend({
 
-        template: Handlebars.compile($('#todo-template').html()),
+        template: Core.Handlebars.compile($('#todo-template').html()),
 
         tagName: 'li',
         className: 'post-it',
@@ -56,7 +82,7 @@
 
     });
 
-    var TodoListView = Backbone.View.extend({
+    var TodoListView = Core.Backbone.View.extend({
         el: '#app',
         
         render: function () {
@@ -69,7 +95,7 @@
         }
     });
 
-    var AboutView = Backbone.View.extend({
+    var AboutView = Core.Backbone.View.extend({
 
         el: '#app',
 
@@ -79,9 +105,9 @@
         }
     });
 
-    var IndexView = Backbone.View.extend({
+    var IndexView = Core.Backbone.View.extend({
 
-        template: Handlebars.compile('<a href="#todo">{{salute}}</a>'),
+        template: Core.Handlebars.compile('<a href="#todo">{{salute}}</a>'),
 
         el: '#app',
 
@@ -93,7 +119,7 @@
         }
     });
 
-    var AppRouter = Backbone.Router.extend({
+    var AppRouter = Core.Backbone.Router.extend({
 
         initialize: function () {
             this.indexView = new IndexView();
@@ -132,14 +158,12 @@
 
     var appRouter = new AppRouter();
 
-    root.App = {
-        router: appRouter
-    }
 
+    $(document).ready(function () {
+        appRouter.start();
+        Backbone.history.start();
+    });
 
-})(this);
-
-$(document).ready(function () {
-    App.router.start();
-    Backbone.history.start();
 });
+
+

@@ -23,6 +23,7 @@
     "backbone": "~1.1.2",
     "jquery": "~2.1.1",
     "handlebars": "~2.0.0",
-    "bootstrap": "~3.3.1"
+    "bootstrap": "~3.3.1",
+    "requirejs": "~2.1.15"
   }
 }
