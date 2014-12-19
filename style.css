@@ -2,19 +2,28 @@
     display: none;
 }
 
-.post-its div {
-    width: 400px;
+.post-it {
+    float: left;
+    margin-left: 6px;
 }
 
-.post-it {
-    background: yellow;
+.post-it span {
+	background: yellow;
+	width:  200px;
+	height: 200px;
+	border-color: black;
+    border-width: 2px;
 }
 
 .todo-text-input {
-    height: 200px;
-    width: 150px;
+    height: 80%;
+    width: 80%;
 }
 
 .finished {
     text-decoration: line-through;
+}
+
+.post-it-list {
+	list-style: none;
 }

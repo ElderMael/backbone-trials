@@ -8,6 +8,7 @@
 
     <!-- Bootstrap -->
     <link href="bower_components/bootstrap/dist/css/bootstrap.css" rel="stylesheet">
+    <!-- Styles -->
     <link href="style.css" rel="stylesheet">
 
 </head>
@@ -32,12 +33,12 @@
         </div>
 </nav>
 
-<main id="app" class="post-its container"></main>
+<main id="app" class="container">
+    
+</main>
 
 <script id="todo-template" type="text/x-handlebars">
     <span class="input-group-addon">
-        <input class="done-box" type="checkbox" {{#if done }}checked{{/if}} />
-
         <p class="todo-display-text">
             <strong {{#if done}}class="finished"{{/if}}>{{{text}}}</strong>
         </p>
@@ -45,6 +46,10 @@
             <textarea class="todo-text-input">{{{text}}}</textarea>
             <br/>
             <button>Done Editing</button>
+        </div>
+        <div>
+            <input class="done-box" type="checkbox" {{#if done }}checked{{/if}} />            
+            <label>Done?</label>
         </div>
     </span>
 </script>

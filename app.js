@@ -17,6 +17,9 @@
 
         template: Handlebars.compile($('#todo-template').html()),
 
+        tagName: 'li',
+        className: 'post-it',
+
         events: {
             'dblclick': 'toggleEditMode',
             'keypress .todo-text-input': 'modifyText',
@@ -55,12 +58,13 @@
 
     var TodoListView = Backbone.View.extend({
         el: '#app',
+        
         render: function () {
-            this.$el.empty();
+            this.$el.html('<ul class="post-it-list"></ul>');
 
             this.collection.forEach(function (todoItem) {
                 var todoView = new TodoView({model: todoItem});
-                this.$el.append(todoView.render().el);
+                this.$('ul').append(todoView.render().el);
             }, this);
         }
     });
@@ -88,7 +92,6 @@
             return this;
         }
     });
-
 
     var AppRouter = Backbone.Router.extend({
 
