@@ -1,0 +1,27 @@
+{
+  "name": "backbone-trials",
+  "version": "0.0.1",
+  "description": "Backbone Refreshner",
+  "main": "app.js",
+  "scripts": {
+    "test": "grunt mocha-test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ElderMael/backbone-trials.git"
+  },
+  "keywords": [
+    "Backbone",
+    "Mocha"
+  ],
+  "author": "ElderMael",
+  "license": "None",
+  "bugs": {
+    "url": "https://github.com/ElderMael/backbone-trials/issues"
+  },
+  "homepage": "https://github.com/ElderMael/backbone-trials",
+  "devDependencies": {
+    "grunt-mocha-test": "^0.12.4",
+    "mocha": "^2.0.1"
+  }
+}
