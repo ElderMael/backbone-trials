@@ -3,9 +3,6 @@
   "version": "0.0.1",
   "description": "Backbone Refreshner",
   "main": "app.js",
-  "scripts": {
-    "test": "grunt mocha-test"
-  },
   "repository": {
     "type": "git",
     "url": "https://github.com/ElderMael/backbone-trials.git"
